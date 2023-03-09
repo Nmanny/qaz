@@ -139,13 +139,13 @@ int main()
     window.setFramerateLimit(60);
 
     sf::Texture playerTexture;
-    playerTexture.loadFromFile("..\\assets1\\player1.png");
+    playerTexture.loadFromFile("..\\..\\assets1\\player1.png");
     Player player(playerTexture, sf::Vector2f(400, 600));
 
     float playerSpeed = 3;
 
     sf::Texture enemyTexture;
-    enemyTexture.loadFromFile("..\\assets1\\enemy1.png");
+    enemyTexture.loadFromFile("..\\..\\assets1\\enemy1.png");
 
     std::vector<Enemy> enemies;
 
@@ -154,7 +154,7 @@ int main()
     //æèçíè
     int lives = 3;
     sf::Font font;
-    font.loadFromFile("..\\assets1\\arial.ttf");
+    font.loadFromFile("..\\..\\assets1\\arial.ttf");
     sf::Text livesText;
     livesText.setFont(font);
     livesText.setCharacterSize(20);
@@ -166,7 +166,7 @@ int main()
     //î÷êè
     int score = 0;
     sf::Font font1;
-    font1.loadFromFile("..\\assets1\\arial.ttf");
+    font1.loadFromFile("..\\..\\assets1\\arial.ttf");
     sf::Text scoreText;
     scoreText.setFont(font1);
     scoreText.setCharacterSize(20);
