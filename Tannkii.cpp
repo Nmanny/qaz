@@ -145,13 +145,13 @@ int main()
     float playerSpeed = 3;
 
     sf::Texture enemyTexture;
-    enemyTexture.loadFromFile("..\\Tannkii\\assets1\\enemy1.png");
+    enemyTexture.loadFromFile("..\\assets1\\enemy1.png");
 
     std::vector<Enemy> enemies;
 
     std::vector<Bullet> bullets;
 
-    //жизни
+    //Г¦ГЁГ§Г­ГЁ
     int lives = 3;
     sf::Font font;
     font.loadFromFile("..\\assets1\\arial.ttf");
@@ -163,7 +163,7 @@ int main()
     else { livesText.setString("You lose"); }
     livesText.setPosition(10.f, 10.f);
 
-    //очки
+    //Г®Г·ГЄГЁ
     int score = 0;
     sf::Font font1;
     font1.loadFromFile("..\\assets1\\arial.ttf");
@@ -201,10 +201,10 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
 
-            // стрельба
+            // Г±ГІГ°ГҐГ«ГјГЎГ 
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space)
             {
-                if (bullets.size() < 3) { // добавляем ограничение на скорость стрельбы
+                if (bullets.size() < 3) { // Г¤Г®ГЎГ ГўГ«ГїГҐГ¬ Г®ГЈГ°Г Г­ГЁГ·ГҐГ­ГЁГҐ Г­Г  Г±ГЄГ®Г°Г®Г±ГІГј Г±ГІГ°ГҐГ«ГјГЎГ»
                     if (dir != sf::Vector2f(0, 0)) {
                         bullets.emplace_back(player.sprite.getPosition(), dir);
                     }
@@ -212,7 +212,7 @@ int main()
             }
         }
 
-        // движения врагов
+        // Г¤ГўГЁГ¦ГҐГ­ГЁГї ГўГ°Г ГЈГ®Гў
         for (size_t i = 0; i < enemies.size(); i++)
         {
             enemies[i].move(2);
@@ -221,14 +221,14 @@ int main()
 
         }
 
-        //враги
+        //ГўГ°Г ГЈГЁ
         if (rand() % 1 < 1 && enemies.size() < maxEnemies)
         {
             sf::Vector2f enemyPosition(rand() % window.getSize().x, rand() % window.getSize().y);
             enemies.emplace_back(enemyTexture, enemyPosition);
         }
 
-        // Обработка движения игрока и направления
+        // ГЋГЎГ°Г ГЎГ®ГІГЄГ  Г¤ГўГЁГ¦ГҐГ­ГЁГї ГЁГЈГ°Г®ГЄГ  ГЁ Г­Г ГЇГ°Г ГўГ«ГҐГ­ГЁГї
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
             if (player.sprite.getPosition().y >= 40) {
@@ -263,7 +263,7 @@ int main()
             player.sprite.setRotation(90.f);
         }
 
-        // Обработка движения пуль и попаданий
+        // ГЋГЎГ°Г ГЎГ®ГІГЄГ  Г¤ГўГЁГ¦ГҐГ­ГЁГї ГЇГіГ«Гј ГЁ ГЇГ®ГЇГ Г¤Г Г­ГЁГ©
         for (size_t i = 0; i < bullets.size(); i++)
         {
             bullets[i].move();
@@ -288,10 +288,10 @@ int main()
                 }
             }
         }
-        for (auto& enemy : enemies) {// столкновение врага и игрока
+        for (auto& enemy : enemies) {// Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГҐ ГўГ°Г ГЈГ  ГЁ ГЁГЈГ°Г®ГЄГ 
             if (enemy.sprite.getGlobalBounds().intersects(player.sprite.getGlobalBounds())) {
 
-                if (timer.getElapsedTime().asSeconds() >= 2.f) {//3 секунды инвиза
+                if (timer.getElapsedTime().asSeconds() >= 2.f) {//3 Г±ГҐГЄГіГ­Г¤Г» ГЁГ­ГўГЁГ§Г 
 
                     if (player.sprite.getPosition().x < enemy.sprite.getPosition().x) {
                         enemy.direction.x = std::abs(enemy.direction.x);
@@ -317,7 +317,7 @@ int main()
         }
 
 
-        // Отрисовка объектов
+        // ГЋГІГ°ГЁГ±Г®ГўГЄГ  Г®ГЎГєГҐГЄГІГ®Гў
         window.clear(sf::Color::Color(204, 177, 100));
         window.draw(player.sprite);
         window.draw(livesText);
